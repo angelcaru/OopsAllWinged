@@ -18,8 +18,10 @@ public class OopsAllWingedModule : EverestModule {
     }
 
     public static void OnBerryCtor(On.Celeste.Strawberry.orig_ctor orig, Strawberry self, EntityData data, Vector2 offset, EntityID gid) {
-        data.Values["winged"] = true;
-        data.Values["moon"] = false;
+        if (data?.Values is not null) {
+            data.Values["winged"] = true;
+            data.Values["moon"] = false;
+        }
         orig(self, data, offset, gid);
     }
 
